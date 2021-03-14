@@ -6,7 +6,7 @@ module.exports = {
   theme: "simple",
   dest: path.resolve(__dirname, "../../dist"),
   themeConfig: {
-    author: "nst-fe"
+    author: "nst-fe",
   },
-  plugins: ["permalink-pinyin"]
+  plugins: ["permalink-pinyin"],
 };
