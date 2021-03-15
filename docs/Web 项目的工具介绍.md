@@ -36,7 +36,7 @@ date: 2021-03-13
 
 对于比较大的项目，需要拆分为多个小项目，而且小项目之前又有较强的依耐性的这种需求，可以使用 [lerna](https://github.com/lerna/lerna) 这样的工具去进行管理。
 
-如果公司经常需要创建新项目，可以考虑写一个公司内部的脚手架，如果是用 Node 写脚手架，下面介绍的这些包可能排的上用场:
+如果公司经常需要创建新项目，可以考虑写一个公司内部的脚手架，如果是用 Node 写脚手架，下面介绍的这些包可能派的上用场:
 
 - [commander.js](https://github.com/tj/commander.js) 用于参数解析与命令注册
 - [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) 交互式命令行工具
