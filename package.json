@@ -5,9 +5,13 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.8.2",
+    "@vuepress/plugin-last-updated": "^1.2.0",
+    "prismjs": "^1.19.0",
+    "timeago.js": "^4.0.2",
     "vuepress": "^1.8.2",
-    "vuepress-theme-simple": "^1.2.2",
-    "vuepress-plugin-permalink-pinyin": "^1.0.0"
+    "vuepress-plugin-permalink-pinyin": "^1.0.0",
+    "vuepress-theme-simple": "^1.2.2"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
