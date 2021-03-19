@@ -10,15 +10,16 @@
       />
     </div>
     <Content />
+    <Vssue :title="$page.title" />
   </section>
 </template>
 
 <script>
-import TimeAgo from './TimeAgo';
+import TimeAgo from "./TimeAgo";
 
 export default {
   components: {
-    TimeAgo
+    TimeAgo,
   },
-}
+};
 </script>
