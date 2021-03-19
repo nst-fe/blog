@@ -9,6 +9,7 @@
     "@vssue/vuepress-plugin-vssue": "^1.4.7",
     "@vuepress/plugin-google-analytics": "^1.8.2",
     "@vuepress/plugin-last-updated": "^1.2.0",
+    "gitalk": "^1.7.2",
     "prismjs": "^1.19.0",
     "timeago.js": "^4.0.2",
     "vuepress": "^1.8.2",
