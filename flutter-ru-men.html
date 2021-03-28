@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>flutter 入门 | 新时空前端 / 博客</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-1PWBM2M60V" async="true"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1PWBM2M60V');
+      </script>
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.50167129.css" as="style"><link rel="preload" href="/assets/js/app.a280ccbb.js" as="script"><link rel="preload" href="/assets/js/5.f3c2ee33.js" as="script"><link rel="preload" href="/assets/js/7.931ceb4e.js" as="script"><link rel="prefetch" href="/assets/js/2.f0dbe274.js"><link rel="prefetch" href="/assets/js/3.9dcbc3f6.js"><link rel="prefetch" href="/assets/js/4.752dbf68.js"><link rel="prefetch" href="/assets/js/6.8cd8f8e4.js"><link rel="prefetch" href="/assets/js/8.7e8b673d.js"><link rel="prefetch" href="/assets/js/9.f7ccce88.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.50167129.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="" class="site-name router-link-active">
+      新时空前端 / 博客
+    </a> <div style="clear: both"></div> <!----></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      flutter 入门
+    </h1> <time datetime="3/26/2021, 12:00:00 AM" title="3/26/2021, 12:00:00 AM" pubdate="pubdate" class="post-date">
+  2 days ago
+</time></div> <div class="content__default"><h2 id="命令行"><a href="#命令行" class="header-anchor">#</a> 命令行</h2> <div class="language-powershell extra-class"><pre class="language-powershell"><code><span class="token comment"># flutter脚手架，类似: vue-cli：vue create vue-cli3 vue_app</span>
+flutter create flutter_app
+<span class="token comment"># 类似：npm install</span>
+flutter packages get
+<span class="token comment"># 类似：npm run dev</span>
+flutter run
+</code></pre></div><h2 id="helloworld"><a href="#helloworld" class="header-anchor">#</a> HelloWorld</h2> <p>开始写一个根组件 app.vue，来挂载一下</p> <div class="language-dart extra-class"><pre class="language-dart"><code><span class="token comment">// 安卓风格样式库，类似: import ElementUI from 'element-ui';</span>
+<span class="token keyword">import</span> <span class="token string">'package:flutter/material.dart'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 主函数（入口函数）</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span><span class="token function">runApp</span><span class="token punctuation">(</span><span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// StatelessWidget 类似：函数式组件，没有状态，依据prop来展示</span>
+<span class="token keyword">class</span> <span class="token class-name">MyApp</span> <span class="token keyword">extends</span> <span class="token class-name">StatelessWidget</span><span class="token punctuation">{</span>
+  <span class="token comment">// 类似：react的render函数</span>
+  <span class="token metadata symbol">@override</span>
+  Widget <span class="token function">build</span><span class="token punctuation">(</span>BuildContext context<span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token comment">// App级别的组件，设置如：app的名字、router、store</span>
+   <span class="token keyword">return</span> <span class="token function">MaterialApp</span><span class="token punctuation">(</span>
+      title<span class="token punctuation">:</span><span class="token string">'Welcome to Flutter'</span><span class="token punctuation">,</span>
+      <span class="token comment">// 页面级别的组件，顶部、导航、左滑窗口</span>
+      home<span class="token punctuation">:</span><span class="token function">Scaffold</span><span class="token punctuation">(</span>
+        appBar<span class="token punctuation">:</span><span class="token function">AppBar</span><span class="token punctuation">(</span>
+          title<span class="token punctuation">:</span><span class="token function">Text</span><span class="token punctuation">(</span><span class="token string">'Welcome to Flutter'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        body<span class="token punctuation">:</span><span class="token function">Center</span><span class="token punctuation">(</span>
+          child<span class="token punctuation">:</span><span class="token function">Text</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>代码效果如下：</p> <p><img src="D:%5Cworkspace%5Cblog%5Cdocs%5Cassets%5Cflutter%5C%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210327171209.png" alt="微信截图_20210327171209"></p> <h2 id="计数器"><a href="#计数器" class="header-anchor">#</a> 计数器</h2> <p>接着写一个页面组件</p> <div class="language-dart extra-class"><pre class="language-dart"><code><span class="token keyword">import</span> <span class="token string">'package:flutter/material.dart'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">runApp</span><span class="token punctuation">(</span><span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyApp</span> <span class="token keyword">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  <span class="token metadata symbol">@override</span>
+  Widget <span class="token function">build</span><span class="token punctuation">(</span>BuildContext context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      
+    <span class="token keyword">return</span> <span class="token function">MaterialApp</span><span class="token punctuation">(</span>
+      title<span class="token punctuation">:</span> <span class="token string">'Flutter Demo'</span><span class="token punctuation">,</span>
+      theme<span class="token punctuation">:</span> <span class="token function">ThemeData</span><span class="token punctuation">(</span>
+        primarySwatch<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>blue<span class="token punctuation">,</span>
+        visualDensity<span class="token punctuation">:</span> VisualDensity<span class="token punctuation">.</span>adaptivePlatformDensity<span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      home<span class="token punctuation">:</span> <span class="token function">MyHomePage</span><span class="token punctuation">(</span>title<span class="token punctuation">:</span> <span class="token string">'Flutter Demo Home Page'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span> 
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 一般的组件，有状态组件</span>
+<span class="token keyword">class</span> <span class="token class-name">MyHomePage</span> <span class="token keyword">extends</span> <span class="token class-name">StatefulWidget</span> <span class="token punctuation">{</span>
+  <span class="token function">MyHomePage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>Key key<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>title<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">super</span><span class="token punctuation">(</span>key<span class="token punctuation">:</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+  <span class="token comment">// 类似：vue的 prop</span>
+  <span class="token keyword">final</span> String title<span class="token punctuation">;</span>
+  
+  <span class="token comment">// 类似：vue的 state</span>
+  <span class="token metadata symbol">@override</span>
+  _MyHomePageState <span class="token function">createState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">_MyHomePageState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">_MyHomePageState</span> <span class="token keyword">extends</span> <span class="token class-name">State</span><span class="token operator">&lt;</span>MyHomePage<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  int _counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">void</span> <span class="token function">_incrementCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      _counter<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token metadata symbol">@override</span>
+  Widget <span class="token function">build</span><span class="token punctuation">(</span>BuildContext context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">Scaffold</span><span class="token punctuation">(</span>
+      appBar<span class="token punctuation">:</span> <span class="token function">AppBar</span><span class="token punctuation">(</span> 
+        title<span class="token punctuation">:</span> <span class="token function">Text</span><span class="token punctuation">(</span>widget<span class="token punctuation">.</span>title<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token comment">// body: display: flex; align-items: center; 组件的默认样式</span>
+      body<span class="token punctuation">:</span> <span class="token function">Center</span><span class="token punctuation">(</span>
+        <span class="token comment">// div: display: flex; flex-direction: column; </span>
+        child<span class="token punctuation">:</span> <span class="token function">Column</span><span class="token punctuation">(</span>
+          <span class="token comment">// align-items: center;</span>
+          mainAxisAlignment<span class="token punctuation">:</span> MainAxisAlignment<span class="token punctuation">.</span>center<span class="token punctuation">,</span>
+          children<span class="token punctuation">:</span> <span class="token operator">&lt;</span>Widget<span class="token operator">&gt;</span><span class="token punctuation">[</span>
+            <span class="token function">Text</span><span class="token punctuation">(</span>
+              <span class="token string">'You have pushed the button this many times:'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token function">Text</span><span class="token punctuation">(</span>
+              <span class="token string">'$_counter'</span><span class="token punctuation">,</span>
+              style<span class="token punctuation">:</span> Theme<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">.</span>textTheme<span class="token punctuation">.</span>headline4<span class="token punctuation">,</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      floatingActionButton<span class="token punctuation">:</span> <span class="token function">FloatingActionButton</span><span class="token punctuation">(</span>
+        onPressed<span class="token punctuation">:</span> _incrementCounter<span class="token punctuation">,</span>
+        tooltip<span class="token punctuation">:</span> <span class="token string">'Increment'</span><span class="token punctuation">,</span>
+        child<span class="token punctuation">:</span> <span class="token function">Icon</span><span class="token punctuation">(</span>Icons<span class="token punctuation">.</span>add<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>代码效果如下：</p> <p><img src="D:%5Cworkspace%5Cblog%5Cdocs%5Cassets%5Cflutter%5C%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210327172727.png" alt="微信截图_20210327172727"></p> <h2 id="参考手册"><a href="#参考手册" class="header-anchor">#</a> 参考手册</h2> <p>老孟的 flutter 组件文档 ：http://laomengit.com/flutter/widgets/widgets_structure.html</p> <p>一个flutter项目：<a href="https://github.com/CarGuo/gsy_github_app_flutter" target="_blank" rel="noopener noreferrer">gsy_github_app_flutter<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <div></div></section> <footer class="footer">
+  © 2021
+  <i class="icon-user"></i> <a href="https://www.nst-fe.site/" target="_blank">
+    nst-fe
+  </a> <br>
+  Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">VuePress</a>
+  | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">Simple</a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a280ccbb.js" defer></script><script src="/assets/js/5.f3c2ee33.js" defer></script><script src="/assets/js/7.931ceb4e.js" defer></script>
+  </body>
+</html>
