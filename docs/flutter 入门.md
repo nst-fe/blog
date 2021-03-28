@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget{
 
 代码效果如下：
 
-![微信截图_20210327171209](D:\workspace\blog\docs\assets\flutter\微信截图_20210327171209.png)
+![微信截图_20210327171209](./assets/flutter/微信截图_20210327171209.png)
 
 
 
@@ -142,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 代码效果如下：
 
-![微信截图_20210327172727](D:\workspace\blog\docs\assets\flutter\微信截图_20210327172727.png)
+![微信截图_20210327172727](./assets/flutter/微信截图_20210327172727.png)
 
 
 
