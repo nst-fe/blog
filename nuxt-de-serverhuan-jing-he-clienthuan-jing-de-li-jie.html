@@ -14,7 +14,7 @@
       </script>
     <meta name="description" content="为第一次使用Nuxt的人，填一点点坑">
     
-    <link rel="preload" href="/assets/css/0.styles.50167129.css" as="style"><link rel="preload" href="/assets/js/app.91149c9d.js" as="script"><link rel="preload" href="/assets/js/6.f3d100af.js" as="script"><link rel="preload" href="/assets/js/7.698a7e7e.js" as="script"><link rel="prefetch" href="/assets/js/10.91d20650.js"><link rel="prefetch" href="/assets/js/2.36b38fb9.js"><link rel="prefetch" href="/assets/js/3.9ca748ea.js"><link rel="prefetch" href="/assets/js/4.1b739ec1.js"><link rel="prefetch" href="/assets/js/5.a4a0ee20.js"><link rel="prefetch" href="/assets/js/8.26867aca.js"><link rel="prefetch" href="/assets/js/9.462d9870.js">
+    <link rel="preload" href="/assets/css/0.styles.50167129.css" as="style"><link rel="preload" href="/assets/js/app.705e10a6.js" as="script"><link rel="preload" href="/assets/js/6.f3d100af.js" as="script"><link rel="preload" href="/assets/js/7.698a7e7e.js" as="script"><link rel="prefetch" href="/assets/js/10.70f034ea.js"><link rel="prefetch" href="/assets/js/11.b1ae5d80.js"><link rel="prefetch" href="/assets/js/2.36b38fb9.js"><link rel="prefetch" href="/assets/js/3.9ca748ea.js"><link rel="prefetch" href="/assets/js/4.1b739ec1.js"><link rel="prefetch" href="/assets/js/5.da775941.js"><link rel="prefetch" href="/assets/js/8.26867aca.js"><link rel="prefetch" href="/assets/js/9.1e9a5484.js">
     <link rel="stylesheet" href="/assets/css/0.styles.50167129.css">
   </head>
   <body>
@@ -23,7 +23,7 @@
     </a> <div style="clear: both"></div> <!----></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
       Nuxt 的server环境和client环境的理解
     </h1> <time datetime="3/19/2021, 12:00:00 AM" title="3/19/2021, 12:00:00 AM" pubdate="pubdate" class="post-date">
-  1 week ago
+  2 weeks ago
 </time></div> <div class="content__default"><h2 id="错误理解-asyncdata-只在server端运行"><a href="#错误理解-asyncdata-只在server端运行" class="header-anchor">#</a> 错误理解：asyncData 只在server端运行</h2> <p>当页面第一次加载或者浏览器上刷新页面时，asyncData 是在server端运行。</p> <p>通过路由跳转时，asyncData 都是在client端运行。</p> <p>类似Nuxt中间件，当页面第一次加载或者浏览器上刷新页面时，Nuxt中间件会在server端和client端运行，通过路由跳转时，Nuxt中间件 只在client端运行。</p> <h2 id="错误理解-使用a标签跳转页面"><a href="#错误理解-使用a标签跳转页面" class="header-anchor">#</a> 错误理解：使用a标签跳转页面</h2> <p>我没接触过Nuxt时的理解：既然要服务端渲染，项目就不能是spa了，因为我的理解就是每个页面都要从服务端拿，所以一定是多页应用程序。</p> <p>现在的理解：Nuxt 是一个 spa 应用，也就是 Nuxt 的路由跳转都是局部刷新。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 不要用下面的方法，浏览器重新加载，加载变慢</span>
 <span class="token comment">// html: &lt;a href=&quot;/shop/cart&quot;&gt;购物车&lt;/a&gt;</span>
 window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href <span class="token operator">=</span> path
@@ -40,6 +40,6 @@ window<span class="token punctuation">.</span>location<span class="token punctua
   <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">VuePress</a>
   | Theme
   <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">Simple</a></footer></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.91149c9d.js" defer></script><script src="/assets/js/6.f3d100af.js" defer></script><script src="/assets/js/7.698a7e7e.js" defer></script>
+    <script src="/assets/js/app.705e10a6.js" defer></script><script src="/assets/js/6.f3d100af.js" defer></script><script src="/assets/js/7.698a7e7e.js" defer></script>
   </body>
 </html>
