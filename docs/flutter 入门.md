@@ -156,6 +156,3 @@ class _MyHomePageState extends State<MyHomePage> {
 ## 参考手册
 
 老孟的 flutter 组件文档 ：http://laomengit.com/flutter/widgets/widgets_structure.html
-
-一个flutter项目：[gsy_github_app_flutter](https://github.com/CarGuo/gsy_github_app_flutter)
-
