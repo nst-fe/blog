@@ -37,7 +37,7 @@ class Person {
 ## 可选参数
 先来一张图理清它们的概念关系
 
-<img src="D:\workspace\blog\docs\assets\flutter\v2-4507b0f462f98194796c0cdb2f2e757a_720w.jpg" alt="v2-4507b0f462f98194796c0cdb2f2e757a_720w" style="zoom:50%;" />
+<img src="./assets/flutter/v2-4507b0f462f98194796c0cdb2f2e757a_720w.jpg" alt="v2-4507b0f462f98194796c0cdb2f2e757a_720w" style="zoom:50%;" />
 
 注意：参数默认值只针对可选参数才能添加的，所以必需参数不能设置默认值。
 

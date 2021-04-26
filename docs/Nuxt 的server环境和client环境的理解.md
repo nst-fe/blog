@@ -197,11 +197,11 @@ export const actions = {
 
 当我们在浏览器中输入/aaa时
 
-![20210426155616](.\assets\nuxt\20210426155616.png)
+![20210426155616](./assets/nuxt/20210426155616.png)
 
 当我们从页面aaa，跳转到页面bbb时
 
-![20210426160218](.\assets\nuxt\20210426160218.png)
+![20210426160218](./assets/nuxt/20210426160218.png)
 
 注意中间件只执行一次，如果用 process.client 或 process.server 括起来的代码，只会执行其中一个。
 
