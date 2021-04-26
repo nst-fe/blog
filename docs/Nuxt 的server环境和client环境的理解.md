@@ -46,7 +46,7 @@ this.$router.push({ path })
 
 主要文件如下
 
-![20210426153723](D:\workspace\blog\docs\assets\nuxt\20210426153723.png)
+![20210426153723](./assets/nuxt/20210426153723.png)
 
 页面aaa.vue:
 
