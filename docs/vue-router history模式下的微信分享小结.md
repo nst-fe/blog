@@ -3,9 +3,12 @@ title: vue-router history模式下的微信分享小结
 date: 2021-04-28
 ---
 
-参考链接：[vue-router history模式下的微信分享小结](https://m.yisu.com/zixun/178203.html)
+参考链接：
+[vue-router history模式下的微信分享小结](https://m.yisu.com/zixun/178203.html)
+[NativeShare](https://github.com/fa-ge/NativeShare)
 
-项目场景：[共享住宅 wap端 详情页的分享](https://m.xzhuzhai.com/land/houseland/detail-10001.html)
+项目场景：
+[共享住宅 wap端 详情页的分享](https://m.xzhuzhai.com/land/houseland/detail-10001.html)
 
 
 
