@@ -25,5 +25,18 @@ module.exports = {
       `,
     ],
   ],
-  plugins: ["permalink-pinyin"],
+  plugins: [
+    [
+      "vuepress-plugin-zooming",
+      {
+        selector: ".theme-container img",
+        delay: 1000,
+        options: {
+          bgColor: "black",
+          zIndex: 10000,
+        },
+      },
+    ],
+    require("./md5-link"),
+  ],
 };
