@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue3 watchEffect 异步问题 | 新时空前端 / 博客</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-1PWBM2M60V" async="true"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1PWBM2M60V');
+      </script>
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.50167129.css" as="style"><link rel="preload" href="/assets/js/app.f3eb2c54.js" as="script"><link rel="preload" href="/assets/js/7.0bb90441.js" as="script"><link rel="preload" href="/assets/js/11.b4cb27a5.js" as="script"><link rel="prefetch" href="/assets/js/10.70ef355e.js"><link rel="prefetch" href="/assets/js/12.ebc6c025.js"><link rel="prefetch" href="/assets/js/13.eb9e4668.js"><link rel="prefetch" href="/assets/js/14.72bf1c65.js"><link rel="prefetch" href="/assets/js/2.e88b5140.js"><link rel="prefetch" href="/assets/js/3.e89865d3.js"><link rel="prefetch" href="/assets/js/4.c5bf79bd.js"><link rel="prefetch" href="/assets/js/5.c3b4687e.js"><link rel="prefetch" href="/assets/js/6.b50f8018.js"><link rel="prefetch" href="/assets/js/8.d2fbe800.js"><link rel="prefetch" href="/assets/js/9.0c9fe905.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.50167129.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="" class="site-name router-link-active">
+      新时空前端 / 博客
+    </a> <div style="clear: both"></div> <!----></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      Vue3 watchEffect 异步问题
+    </h1> <time datetime="5/15/2021, 12:00:00 AM" title="5/15/2021, 12:00:00 AM" pubdate="pubdate" class="post-date">
+  40 minutes ago
+</time></div> <div class="content__default"><p>观察下面的代码，你猜猜会打印什么？注意，不用太关注 setTimeout 不是 EventLoop 问题。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">watchEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  count<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>以上代码只会打印 1，我们稍微把代码改一下，就可以让它先打印 1，过 1 秒再打印 6 <a href="https://codesandbox.io/s/stoic-darwin-osx65?file=/src/components/HelloWorld.vue:2341-2552" target="_blank" rel="noopener noreferrer">在线示例<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <div class="language-diff extra-class"><pre class="language-diff"><code>const count = ref(1);
+
+watchEffect(() =&gt; {
+<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> const value = count.value;
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> setTimeout(() =&gt; {
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> 	console.log(count.value);
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   console.log(value);
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> });
+</span></span>});
+
+setTimeout(() =&gt; {
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> count.value = 6;
+</span></span>}, 1000);
+</code></pre></div><p>为什么会这样?我写一个超级简单的 watchEffect 来解析其原理：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/**
+ * 超级简单 watchEffect Demo
+ */</span>
+<span class="token keyword">let</span> activeEffect <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token comment">// 1. 调用 activeEffect 时，将传递过来的回调存储在 activeEffect 上</span>
+<span class="token keyword">const</span> <span class="token function-variable function">watchEffect</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">effect</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  activeEffect <span class="token operator">=</span> effect<span class="token punctuation">;</span>
+  <span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 当一次调用完毕之后，将当前 activeEffect 重置为 null</span>
+  <span class="token comment">// 这样是为了确保在多次调用 watchEffect 时，activeEffect 不会因为上一次调用</span>
+  <span class="token comment">// 的值使得下一次调用收集依赖时逻辑混乱</span>
+  <span class="token comment">// ** 注意 **</span>
+  <span class="token comment">// 这里就解释了为什么 watchEffect 在使用异步取值操作之后再次赋值不触发的问题？</span>
+  <span class="token comment">// 因为在异步取值调用之前(似乎还是要有点 EventLoop 知识 ^_^),</span>
+  <span class="token comment">// activeEffect 已经置空，导致接下来的存储依赖逻辑没有依赖函数要关联,</span>
+  <span class="token comment">// 没有关联依赖就导致下次赋值时不会再次触发</span>
+  activeEffect <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">ref</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">init</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 使用 proxy 在存取值时添加额外的逻辑</span>
+  <span class="token keyword">const</span> handler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">obj<span class="token punctuation">,</span> prop</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 2.</span>
+      <span class="token comment">// 初次调用 watchEffect 时，如果有取值操作且 activeEffect 有值时，</span>
+      <span class="token comment">// 我们将 activeEffect存入当前对象的  _dependEffect 依赖数组中,</span>
+      <span class="token comment">// 使它们发生关联，以便后续赋值时再次调用</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>prop <span class="token operator">===</span> <span class="token string">&quot;value&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>obj<span class="token punctuation">.</span>_dependEffect<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          obj<span class="token punctuation">.</span>_dependEffect <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>activeEffect<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          obj<span class="token punctuation">.</span>_dependEffect<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>activeEffect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> obj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">obj<span class="token punctuation">,</span> prop<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      obj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+      <span class="token comment">// 3. 当发生赋值操作时，遍历对象的 _dependEffect ，实现</span>
+      <span class="token comment">// 值发生变化时，再次调用  watchEffect 的效果</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>prop <span class="token operator">===</span> <span class="token string">&quot;value&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        obj<span class="token punctuation">.</span>_dependEffect<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">effect</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span><span class="token punctuation">{</span> value<span class="token operator">:</span> init <span class="token punctuation">}</span><span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">watchEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  count<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>当然，实际上的 <code>watchEffect</code> 实现没有这么简单，还有很多细节没处理，但也没有多复杂，感兴趣的可以直接阅读 effect 的源码 <a href="https://github.com/vuejs/vue-next/blob/master/packages/reactivity/src/effect.ts" target="_blank" rel="noopener noreferrer">https://github.com/vuejs/vue-next/blob/master/packages/reactivity/src/effect.ts<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，注意这不是 watchEffect 的实现，但是 watchEffect 底层是调用 reactivity 包，理解原理看这个源码就行。</p></div> <div></div></section> <footer class="footer">
+  © 2021
+  <i class="icon-user"></i> <a href="https://www.nst-fe.site/" target="_blank">
+    nst-fe
+  </a> <br>
+  Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">VuePress</a>
+  | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">Simple</a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.f3eb2c54.js" defer></script><script src="/assets/js/7.0bb90441.js" defer></script><script src="/assets/js/11.b4cb27a5.js" defer></script>
+  </body>
+</html>
