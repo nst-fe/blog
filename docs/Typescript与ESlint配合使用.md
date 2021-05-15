@@ -1,6 +1,7 @@
 ---
 title: TypeScript 与 ESlint 配合使用
 date: 2021-04-30
+author: cj0x39e
 ---
 
 为了更好的兼容 ESLint 的生态，TSLint 已放弃独立发展，时到今日 TypeScript 的类型检查工具没得选了，就是 ESLint。

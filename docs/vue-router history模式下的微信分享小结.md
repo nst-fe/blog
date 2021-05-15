@@ -1,6 +1,7 @@
 ---
 title: vue-router history模式下的微信分享小结
 date: 2021-04-28
+author: PengZhiQi 
 ---
 
 参考链接：

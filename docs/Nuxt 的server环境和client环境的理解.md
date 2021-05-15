@@ -2,6 +2,7 @@
 title: Nuxt 的server环境和client环境的理解
 date: 2021-03-19
 description: 为第一次使用Nuxt的人，填一点点坑
+author: PengZhiQi 
 ---
 
 

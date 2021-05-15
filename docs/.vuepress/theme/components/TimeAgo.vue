@@ -9,24 +9,24 @@
 </template>
 
 <script>
-import { format } from 'timeago.js';
+import { format } from "timeago.js";
 
 export default {
   filters: {
     timeago: (str, lang) => {
-      if (!str) return format()
-      const locale = (lang === 'zh-CN') ? 'zh_CN': 'en_US'
-      return format(new Date(str), locale)
+      if (!str) return format();
+      const locale = lang === "zh-CN" ? "zh_CN" : "en_US";
+      return format(new Date(str), locale);
     },
-    formatDate: date => {
-      return new Date(date).toLocaleString()
-    }
+    formatDate: (date) => {
+      return new Date(date).toLocaleString();
+    },
   },
   props: {
     lastUpdated: {
-      type: [ String, Date, Number ],
-      default: ''
+      type: [String, Date, Number],
+      default: "",
     },
   },
-}
+};
 </script>

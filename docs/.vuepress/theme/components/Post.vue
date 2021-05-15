@@ -4,6 +4,10 @@
       <h1 class="post-title">
         {{ $page.title }}
       </h1>
+    </div>
+    <div class="post-sub-head">
+      <div class="post-author">{{ $page.frontmatter.author || "佚名" }}</div>
+      <span class="post-gap">&nbsp;/&nbsp;</span>
       <time-ago
         :last-updated="$page.frontmatter.date || $page.lastUpdated"
         class="post-date"

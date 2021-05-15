@@ -1,6 +1,7 @@
 ---
 title: Vue3 watchEffect 异步问题
 date: 2021-05-15
+author: cj0x39e
 ---
 
 观察下面的代码，你猜猜会打印什么？注意，不用太关注 setTimeout 不是 EventLoop 问题。
