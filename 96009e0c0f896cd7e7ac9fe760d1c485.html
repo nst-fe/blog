@@ -14,15 +14,15 @@
       </script>
     <meta name="description" content="为第一次使用Nuxt的人，填一点点坑">
     
-    <link rel="preload" href="/assets/css/0.styles.50167129.css" as="style"><link rel="preload" href="/assets/js/app.f3eb2c54.js" as="script"><link rel="preload" href="/assets/js/7.0bb90441.js" as="script"><link rel="preload" href="/assets/js/3.e89865d3.js" as="script"><link rel="prefetch" href="/assets/js/10.70ef355e.js"><link rel="prefetch" href="/assets/js/11.b4cb27a5.js"><link rel="prefetch" href="/assets/js/12.ebc6c025.js"><link rel="prefetch" href="/assets/js/13.eb9e4668.js"><link rel="prefetch" href="/assets/js/14.72bf1c65.js"><link rel="prefetch" href="/assets/js/2.e88b5140.js"><link rel="prefetch" href="/assets/js/4.c5bf79bd.js"><link rel="prefetch" href="/assets/js/5.c3b4687e.js"><link rel="prefetch" href="/assets/js/6.b50f8018.js"><link rel="prefetch" href="/assets/js/8.d2fbe800.js"><link rel="prefetch" href="/assets/js/9.0c9fe905.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.50167129.css">
+    <link rel="preload" href="/assets/css/0.styles.e7acc91e.css" as="style"><link rel="preload" href="/assets/js/app.28979259.js" as="script"><link rel="preload" href="/assets/js/7.70566b39.js" as="script"><link rel="preload" href="/assets/js/3.4392c754.js" as="script"><link rel="prefetch" href="/assets/js/10.dc761b80.js"><link rel="prefetch" href="/assets/js/11.1af9719a.js"><link rel="prefetch" href="/assets/js/12.cef88562.js"><link rel="prefetch" href="/assets/js/13.a9b5d856.js"><link rel="prefetch" href="/assets/js/14.45581424.js"><link rel="prefetch" href="/assets/js/2.e88b5140.js"><link rel="prefetch" href="/assets/js/4.c5bf79bd.js"><link rel="prefetch" href="/assets/js/5.9ea3f247.js"><link rel="prefetch" href="/assets/js/6.f59aa387.js"><link rel="prefetch" href="/assets/js/8.ef88d289.js"><link rel="prefetch" href="/assets/js/9.028f96df.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e7acc91e.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="为第一次使用Nuxt的人，填一点点坑" class="site-name router-link-active">
       新时空前端 / 博客
     </a> <div style="clear: both"></div> <!----></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
       Nuxt 的server环境和client环境的理解
-    </h1> <time datetime="3/19/2021, 12:00:00 AM" title="3/19/2021, 12:00:00 AM" pubdate="pubdate" class="post-date">
+    </h1></div> <div class="post-sub-head"><div class="post-author">PengZhiQi</div> <span class="post-gap"> / </span> <time datetime="3/19/2021, 12:00:00 AM" title="3/19/2021, 12:00:00 AM" pubdate="pubdate" class="post-date">
   1 month ago
 </time></div> <div class="content__default"><h2 id="错误理解-asyncdata-只在server端运行"><a href="#错误理解-asyncdata-只在server端运行" class="header-anchor">#</a> 错误理解：asyncData 只在server端运行</h2> <p>当页面第一次加载或者浏览器上刷新页面时，asyncData 是在server端运行。</p> <p>通过路由跳转时，asyncData 都是在client端运行。</p> <p>类似Nuxt中间件，当页面第一次加载或者浏览器上刷新页面时，<s>Nuxt中间件会在server端和client端运行</s>  Nuxt中间件 只在server端运行，通过路由跳转时，Nuxt中间件 只在client端运行。</p> <h2 id="错误理解-使用a标签跳转页面"><a href="#错误理解-使用a标签跳转页面" class="header-anchor">#</a> 错误理解：使用a标签跳转页面</h2> <p>我没接触过Nuxt时的理解：既然要服务端渲染，项目就不能是spa了，因为我的理解就是每个页面都要从服务端拿，所以一定是多页应用程序。</p> <p>现在的理解：Nuxt 是一个 spa 应用，也就是 Nuxt 的路由跳转都是局部刷新。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 不要用下面的方法，浏览器重新加载，加载变慢</span>
 <span class="token comment">// html: &lt;a href=&quot;/shop/cart&quot;&gt;购物车&lt;/a&gt;</span>
@@ -160,6 +160,6 @@ window<span class="token punctuation">.</span>location<span class="token punctua
   <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">VuePress</a>
   | Theme
   <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">Simple</a></footer></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.f3eb2c54.js" defer></script><script src="/assets/js/7.0bb90441.js" defer></script><script src="/assets/js/3.e89865d3.js" defer></script>
+    <script src="/assets/js/app.28979259.js" defer></script><script src="/assets/js/7.70566b39.js" defer></script><script src="/assets/js/3.4392c754.js" defer></script>
   </body>
 </html>
