@@ -147,8 +147,4 @@ HTML 方面的工具使用不多，就简单列几个模板引擎，如 [pug](ht
 
 好了，先说这么多，或许还有些什么工具没想起来的，后续再写上。
 
----
-
-作者: [cj0x39e](https://github.com/cj0x39e)
-
 [^1]: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-template-repository

@@ -185,7 +185,3 @@ export default class YourComponent extends Vue {
 ```
 
 当然其最终的逻辑也是帮我们把以类成员方式书写的配置转化为 Vue.extend 配置对象的对应配置项。
-
----
-
-作者: [cj0x39e](https://github.com/cj0x39e)
